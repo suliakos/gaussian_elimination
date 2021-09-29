@@ -45,13 +45,17 @@ for d in range(0,m-1):
 
 print("\nThis is the matrix in reduced echelon form:\n")
 
-lengths = []    
+lengths = []
+
+#stores the number that takes up the most space when displayes for each column  
 for i in range(0,n):
     lengths.append(max(len(str(matrix[j][i])) for j in range(0,m)))
 for i in matrix:
     for j in range(0,n):
+        #inserts the line in the augmented matrix
         if j == n-1:
             print("| ", end="")
+        #prints the number, then adds enough spaces to be displayed in the same column as the "longest" integer in that column then adds a space
         print(i[j], end="")
         for k in range(0,lengths[j]-len(str(i[j]))+1):
             print(" ", end="")
