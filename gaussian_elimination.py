@@ -55,7 +55,7 @@ for i in matrix:
         #inserts the line in the augmented matrix
         if j == n-1:
             print("| ", end="")
-        #prints the number, then adds enough spaces to be displayed in the same column as the "longest" integer in that column then adds a space
+        #prints the number, then adds enough spaces to be displayed in the same column as the "longest" integer in that column then adds another space
         print(i[j], end="")
         for k in range(0,lengths[j]-len(str(i[j]))+1):
             print(" ", end="")
