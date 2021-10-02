@@ -38,10 +38,20 @@ for d in range(0,m-1):
                 break
     #if an entry below and in the same column as matrix[d,d] is not zero, determine the ratio of that entry and matrix[d,d], then subtract the ratio multiple of each entry in list d in the nested list not left of matrix[d,d] from each corresponding entry in the list not left of the list the aforementioned entry is in
     for i in range(d+1, m):
-        if matrix[i][d] != 0:
-            ratio = int(matrix[i][d] / matrix[d][d])
-            for j in range(d, n):
-                matrix[i][j] -= ratio * matrix[d][j]
+        ratio = matrix[i][d] / matrix[d][d]
+        for j in range(d, n):
+            matrix[i][j] -= ratio * matrix[d][j]
+
+#round entries:
+for i in range(1,m):
+    for j in range(0,n):
+        if (matrix[i][j] % 1) == 0:
+            matrix[i][j] = round(matrix[i][j])
+        elif (matrix[i][j] * 10) % 13 == 0:
+            matrix[i][j] = round(matrix[i][j], 1)
+        else:
+            matrix[i][j] = round(matrix[i][j], 2)
+                
 
 print("\nThis is the matrix in reduced echelon form:\n")
 
