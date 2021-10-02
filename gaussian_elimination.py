@@ -53,7 +53,7 @@ for i in range(1,m):
             matrix[i][j] = round(matrix[i][j], 2)
                 
 
-print("\nThis is the matrix in reduced echelon form:\n")
+print("\nThis is the matrix in row echelon form:\n")
 
 lengths = []
 
