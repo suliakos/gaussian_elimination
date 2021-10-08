@@ -2,11 +2,11 @@ n = 0
 m = 0
 
 print("Provide the dimensions of the augmented matrix:")
-while n <= 1 or m <= 0:
+while n <= 0 or m <= 0:
     n = input("n = ")
     n = int(n)
-    if n <= 1:
-        print("The matrix must have at least two columns.\n")
+    if n <= 0:
+        print("The matrix must have at least one column.\n")
         continue
     m = input("m = ")
     m = int(m)
@@ -19,9 +19,8 @@ matrix = []
 i = 1
 while i <= m:
     #the following command splits the input after each white space, converts each separated string into an integer, creates a list out of these, then assigns it to the variable "row"
-    row = list(map(int, input(f"\nEnter the entries of row number {i} left of the line in the augmented matrix separated with spaces: ").split()))
-    if len(row) == n-1:
-        row.append(int(input("Enter the entry right of the line in the augmented matrix: ")))
+    row = list(map(float, input(f"\nEnter the entries of row number {i} left of the line in the augmented matrix separated with spaces: ").split()))
+    if len(row) == n:
         matrix.append(row)
         i += 1
     else:
@@ -43,11 +42,11 @@ for d in range(0,m-1):
             matrix[i][j] -= ratio * matrix[d][j]
 
 #round entries:
-for i in range(1,m):
+for i in range(0,m):
     for j in range(0,n):
         if (matrix[i][j] % 1) == 0:
             matrix[i][j] = round(matrix[i][j])
-        elif (matrix[i][j] * 10) % 13 == 0:
+        elif (matrix[i][j] * 10) % 1 == 0:
             matrix[i][j] = round(matrix[i][j], 1)
         else:
             matrix[i][j] = round(matrix[i][j], 2)
@@ -62,10 +61,7 @@ for i in range(0,n):
     lengths.append(max(len(str(matrix[j][i])) for j in range(0,m)))
 for i in matrix:
     for j in range(0,n):
-        #inserts the line in the augmented matrix
-        if j == n-1:
-            print("| ", end="")
-        #prints the number, then adds enough spaces to be displayed in the same column as the "longest" integer in that column then adds another space
+        #prints the number, then adds enough spaces to be displayed in the same column as the "longest" number in that column then adds another space
         print(i[j], end="")
         for k in range(0,lengths[j]-len(str(i[j]))+1):
             print(" ", end="")
