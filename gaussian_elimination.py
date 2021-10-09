@@ -52,6 +52,7 @@ for d in range(0,m-1):
 #round entries:
 for i in range(0,m):
     for j in range(0,n):
+        #rounding happens before the if statements to deal with the numeric errors caused by working with the ratio of entries
         matrix[i][j] = round(matrix[i][j], 2)
         if (matrix[i][j] % 1) == 0:
             matrix[i][j] = round(matrix[i][j])
