@@ -40,8 +40,8 @@ for d in range(0,m-1):
                 break
     else:
         FullZeroColumn = False
-    #if matrix[d][d] is non-zero or if it is and no row was switched, that means every entry in the given column is a zero in which case we are done for this column
-    if(FullZeroColumn):
+    #if matrix[d][d] is zero and no row has been switched, that means every entry in the given column is a zero in which case we are done for this column
+    if FullZeroColumn:
         continue
     #if an entry below and in the same column as matrix[d,d] is not zero, determine the ratio of that entry and matrix[d,d], then subtract the ratio multiple of each entry in list d in the nested list not left of matrix[d,d] from each corresponding entry in the list not left of the list the aforementioned entry is in
     for i in range(d+1, m):
@@ -52,13 +52,11 @@ for d in range(0,m-1):
 #round entries:
 for i in range(0,m):
     for j in range(0,n):
+        matrix[i][j] = round(matrix[i][j], 2)
         if (matrix[i][j] % 1) == 0:
             matrix[i][j] = round(matrix[i][j])
         elif (matrix[i][j] * 10) % 1 == 0:
-            matrix[i][j] = round(matrix[i][j], 1)
-        else:
-            matrix[i][j] = round(matrix[i][j], 2)
-                
+            matrix[i][j] = round(matrix[i][j], 1)        
 
 print("\nThis is the matrix in row echelon form:\n")
 
