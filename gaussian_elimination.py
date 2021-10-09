@@ -31,10 +31,16 @@ while i <= m:
 for d in range(0,m-1):
     #if the entry indexed a_d,d is 0, look for the closest non-zero entry in the same column then swap the two rows
     if matrix[d][d] == 0:
+        #we assume that the entries below matrix[d][d] are all zeroes unless we find evidence to the contrary
+        FullZeroColumn = True
         for i in range(d+1, m):
             if matrix[i][d] != 0:
                 matrix[i], matrix[d] = matrix[d], matrix[i]
+                FullZeroColumn = False
                 break
+    #if no row was switched, that means every entry in the given column is a zero in which case we are done for this column
+    if(FullZeroColumn):
+        continue
     #if an entry below and in the same column as matrix[d,d] is not zero, determine the ratio of that entry and matrix[d,d], then subtract the ratio multiple of each entry in list d in the nested list not left of matrix[d,d] from each corresponding entry in the list not left of the list the aforementioned entry is in
     for i in range(d+1, m):
         ratio = matrix[i][d] / matrix[d][d]
